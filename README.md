@@ -73,18 +73,12 @@ Before deploying to AWS EC2, ensure you have:
 
 #### 1. Connect to Your EC2 Instance
 ```bash
-# Using SSH key
-ssh -i your-key.pem ec2-user@your-ec2-public-ip
-
 # Or using username for Ubuntu
 ssh -i your-key.pem ubuntu@your-ec2-public-ip
 ```
 
 #### 2. Update System Packages
 ```bash
-# For Amazon Linux 2
-sudo yum update -y
-
 # For Ubuntu
 sudo apt update && sudo apt upgrade -y
 ```
@@ -93,10 +87,6 @@ sudo apt update && sudo apt upgrade -y
 
 **Install Node.js and npm:**
 ```bash
-# For Amazon Linux 2
-curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
-sudo yum install -y nodejs
-
 # For Ubuntu
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
@@ -108,12 +98,6 @@ npm --version
 
 **Install Docker:**
 ```bash
-# For Amazon Linux 2
-sudo yum install -y docker
-sudo systemctl start docker
-sudo systemctl enable docker
-sudo usermod -a -G docker ec2-user
-
 # For Ubuntu
 sudo apt-get install -y docker.io
 sudo systemctl start docker
@@ -126,9 +110,6 @@ newgrp docker
 
 **Install Git:**
 ```bash
-# For Amazon Linux 2
-sudo yum install -y git
-
 # For Ubuntu
 sudo apt-get install -y git
 ```
