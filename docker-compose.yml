@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  netflix-clone:
+    build: .
+    ports:
+      - "3000:80"
+    container_name: netflix-clone-app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Development service (optional)
+  netflix-clone-dev:
+    build: .
+    ports:
+      - "3001:80"
+    container_name: netflix-clone-dev
+    volumes:
+      - ./src:/app/src
+    environment:
+      - NODE_ENV=development
+    profiles:
+      - dev 
